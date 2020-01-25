@@ -1,0 +1,11 @@
+<div class='ligma-tooltip {{position}}'
+     [@fade]='showFlag'
+     #tooltip
+     (@fade.done)='onFadeDone($event)'
+     (mouseover)='onMouseOver($event.target)'
+     (mouseout)='onMouseOut($event.target)'>
+    <div class='ligma-tooltip__arrow'></div>
+    <div class='ligma-tooltip__content'
+         [innerHTML]='content'>
+    </div>
+</div>

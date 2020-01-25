@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WindowRotatorModule } from './window-rotator/window-rotator.module';
+import { GraphModule } from './graph/graph.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { WindowRotatorModule } from './window-rotator/window-rotator.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    WindowRotatorModule
+    WindowRotatorModule,
+    GraphModule
   ],
   providers: [],
   bootstrap: [AppComponent]
