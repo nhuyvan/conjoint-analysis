@@ -1,20 +1,13 @@
 <ligma-window-rotator>
-    <ligma-window>
+    <ligma-window *ngFor='let question of questions'>
         <ligma-graph width='100%'
-                     height='70%'
-                     [graph]='graph'>
+                     height='80%'
+                     [graph]='graph'
+                     [highlightedSubgraphs]='{
+                        "left": question.left.graph,
+                        "right": question.right.graph
+                     }'>
         </ligma-graph>
-    </ligma-window>
-    <ligma-window>
-        <ligma-graph width='100%'
-                     height='70%'
-                     [graph]='graph'>
-        </ligma-graph>
-    </ligma-window>
-    <ligma-window>
-        <ligma-graph width='100%'
-                     height='70%'
-                     [graph]='graph'>
-        </ligma-graph>
+        <ligma-question [question]='question'></ligma-question>
     </ligma-window>
 </ligma-window-rotator>

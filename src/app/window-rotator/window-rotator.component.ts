@@ -1,4 +1,6 @@
-import { Component, ViewEncapsulation, ContentChildren, AfterContentInit, QueryList } from '@angular/core';
+import { Component, ViewEncapsulation, ContentChildren, AfterContentInit, QueryList, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 import { WindowComponent } from './views/window/window.component';
 
@@ -8,7 +10,7 @@ import { WindowComponent } from './views/window/window.component';
   styleUrls: ['./window-rotator.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class WindowRotatorComponent implements AfterContentInit {
+export class WindowRotatorComponent implements AfterContentInit, OnDestroy {
 
   currentIndex = 0;
   numberOfWindows = 0;
@@ -18,11 +20,21 @@ export class WindowRotatorComponent implements AfterContentInit {
 
   private _previousIndex = 0;
   private _windows: WindowComponent[];
+  private _contentQuerySubscription: Subscription;
 
   ngAfterContentInit() {
-    this._windows = this._windowQueryList.toArray();
-    this.numberOfWindows = this._windows.length;
-    this._windows[0].visible = true;
+    this._contentQuerySubscription = this._windowQueryList.changes.pipe(delay(16))
+      .subscribe({
+        next: queryList => {
+          this._windows = queryList.toArray();
+          this.numberOfWindows = this._windows.length;
+          this._windows[0].visible = true;
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this._contentQuerySubscription.unsubscribe();
   }
 
   nextWindow() {

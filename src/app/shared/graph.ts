@@ -4,7 +4,7 @@ export interface Graph {
 }
 
 export interface GraphNode {
-  gid: string;
+  guid: string;
   id: number;
   x: number;
   y: number;
@@ -13,7 +13,7 @@ export interface GraphNode {
 }
 
 export interface GraphEdge {
-  gid: string;
-  source: number;
-  target: number;
+  guid: string;
+  source: GraphNode;
+  target: GraphNode;
 }

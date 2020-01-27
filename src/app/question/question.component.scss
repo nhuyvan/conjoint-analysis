@@ -1,0 +1,36 @@
+.question {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.question__prompt {
+    color: #00fff5;
+    font-size: 1.5em;
+}
+
+.question__answer-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-slider {
+        width: 20vw;
+    }
+}
+
+.question__answer-slider__endpoint {
+    margin: 0 1em;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.question__answer-slider__endpoint.left {
+    color: #ffa500;
+}
+
+.question__answer-slider__endpoint.right {
+    color: #fff;
+}

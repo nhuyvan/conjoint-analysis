@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WindowRotatorModule } from './window-rotator/window-rotator.module';
 import { GraphModule } from './graph/graph.module';
+import { QuestionModule } from './question/question.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { GraphModule } from './graph/graph.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     WindowRotatorModule,
-    GraphModule
+    GraphModule,
+    QuestionModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

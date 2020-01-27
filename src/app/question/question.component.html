@@ -1,0 +1,13 @@
+<h1 class='question__prompt'>
+    {{question.prompt}}
+</h1>
+<div class='question__answer-slider'>
+    <div class='question__answer-slider__endpoint left'>{{question.left.label}}</div>
+    <mat-slider [thumbLabel]='true'
+                [min]='1'
+                [max]='5'
+                [tickInterval]='1'
+                [step]='1'>
+    </mat-slider>
+    <div class='question__answer-slider__endpoint right'>{{question.right.label}}</div>
+</div>
