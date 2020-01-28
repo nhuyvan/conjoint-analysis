@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "deploy": "rm -rf *.html *.css *.js *.txt .ico assets && mv dist/conjoint-analysis/* ."
+    }
+}
