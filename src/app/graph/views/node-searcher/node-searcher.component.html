@@ -1,0 +1,37 @@
+<div class='node-searcher-query-input-box-opener'
+     [style.transform]='queryInputBoxWidth === "20vw" ? "translateX(70px)" : "translateX(0)"'
+     (click)='openQueryInputBox(input)'>
+    <button mat-mini-fab>
+        <mat-icon>search</mat-icon>
+    </button>
+</div>
+<div class='node-searcher-query-input-box'
+     [style.width]='queryInputBoxWidth'>
+    <div class='node-searcher-query-input-box__input'>
+        <mat-form-field>
+            <input #input
+                   matInput
+                   autofocus='true'
+                   placeholder='Example query: 1, 2, 3 -> 4, 5<->6'
+                   [formControl]='graphQueryFormControl'
+                   (blur)='closeQueryInputBox($event)' />
+        </mat-form-field>
+    </div>
+    <svg class='node-searcher-query-input-box__close'
+         width='40'
+         height='40'
+         ligmaTooltip='Close'
+         ligmaTooltipPosition='left'
+         (click)='closeQueryInputBox($event)'>
+        <line class='node-searcher-query-input-box__close__line'
+              x1='5'
+              y1='5'
+              x2='35'
+              y2='35' />
+        <line class='node-searcher-query-input-box__close__line'
+              x1='5'
+              y1='35'
+              x2='35'
+              y2='5' />
+    </svg>
+</div>

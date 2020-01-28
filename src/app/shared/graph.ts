@@ -5,7 +5,7 @@ export interface Graph {
 
 export interface GraphNode {
   guid: string;
-  id: number;
+  id: string;
   x: number;
   y: number;
   displayX: number;

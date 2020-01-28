@@ -38,8 +38,6 @@ export class GraphComponent implements AfterViewInit {
 
   private readonly _xScale: ScaleLinear<number, number>;
   private readonly _yScale: ScaleLinear<number, number>;
-  private readonly _nodeMap = new Map<number, GraphNode>();
-  private readonly _edgeMap = new Map<string, GraphEdge>();
 
   @ViewChild('canvas')
   private _canvasRef: ElementRef<SVGElement>;
@@ -105,7 +103,6 @@ export class GraphComponent implements AfterViewInit {
         </div>
       `;
       fragment.appendChild(renderedNode);
-      this._nodeMap.set(node.id, node);
     }
     nodeContainer.appendChild(fragment);
   }
@@ -121,7 +118,6 @@ export class GraphComponent implements AfterViewInit {
       line.setAttribute('x2', String(edge.target.displayX));
       line.setAttribute('y2', String(edge.target.displayY));
       fragment.appendChild(line);
-      this._edgeMap.set(edge.guid, edge);
     }
     edgeContainer.appendChild(fragment);
   }
@@ -141,7 +137,7 @@ export class GraphComponent implements AfterViewInit {
     if (target.hasAttribute('data-node-id')) {
       this._waitDuration(500)
         .then(() => {
-          const node = this._nodeMap.get(+target.dataset.nodeId);
+          const node = this.graph.nodes.find(e => e.id === target.dataset.nodeId);
           const tooltipContent = JSON.stringify({
             id: node.id,
             x: node.x,
@@ -161,6 +157,18 @@ export class GraphComponent implements AfterViewInit {
   hideNodeTooltip() {
     clearTimeout(this._timer);
     this._tooltipService.hide();
+  }
+
+  onSubgraphQueryChange(subgraph: Graph) {
+    this._canvasRef.nativeElement.querySelectorAll('.subgraph--search-result')
+      .forEach(element => {
+        element.classList.remove('subgraph--search-result');
+      });
+    if (subgraph.nodes.length !== 0 || subgraph.edges.length !== 0) {
+      this._highlightSubgraph(subgraph, 'subgraph--search-result');
+    } else {
+
+    }
   }
 
 }

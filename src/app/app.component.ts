@@ -50,8 +50,10 @@ export class AppComponent implements OnInit {
       nodeMap.set(
         node.id,
         {
-          ...node,
+          id: String(node.id),
           guid: `_${node.id}_`,
+          x: node.x,
+          y: node.y,
           displayX: 0,
           displayY: 0
         }
