@@ -10,7 +10,10 @@
 /ignores
 
 # dependencies
-/node_modules
+node_modules
+
+frontend
+backend
 
 # profiling files
 chrome-profiler-events*.json
