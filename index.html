@@ -12,9 +12,10 @@
               href="favicon.ico">
 
         <script>
-            window.location.href = 'http://ec2-35-163-67-101.us-west-2.compute.amazonaws.com:8080/';
+            const dataset = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            window.location.href = 'http://ec2-35-163-67-101.us-west-2.compute.amazonaws.com:8080/' + dataset;
         </script>
 
-    <body class='mat-app-background'>
+    <body class='mat-app-background'></body>
 
 </html>
